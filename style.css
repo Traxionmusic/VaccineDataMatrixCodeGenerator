@@ -1,0 +1,106 @@
+            /* Button */
+            .dropbtn {
+                background-color: #DD1321;
+                color: white;
+                padding: 16px;
+                font-size: 1.25rem;
+                border: none;
+                cursor: pointer;
+            }
+
+            /* Button on hover & focus */
+            .dropbtn:hover, .dropbtn:focus {
+                background-color: #0A4D8C   ;
+            }
+
+            /* Search Field */
+            #name-input {
+                box-sizing: border-box;
+                font-size: 16px;
+                padding: 14px 20px 12px 45px;
+                border: none;
+                border-bottom: 1px solid #ddd;
+            }
+
+            /* div to position dropdown content */
+            #dropdown-content {
+                position: relative;
+                display: inline-block;
+            }
+
+            #name-output {
+                display: inline-block;
+                padding-left: 25px;
+                font-size: 1.5rem;
+            }
+
+            #lot-output {
+                display: inline-block;
+                font-size: 1.5rem;
+                padding-left: 25px;
+            }
+
+            /* Dropdown Content (hidden by defauly) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f6f6f6;
+                min-width: 230px;
+                border: 1px solid #ddd;
+                z-index: 1;
+                max-height: 500px;
+                overflow-y: auto;
+            }
+
+            /* Selections in dropdown */
+            .dropdown-content p {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                font-size: 1.25rem;
+            }
+
+            /* change color of selection on hover */
+            .dropdown-content p:hover {
+                background-color: #f1f1f1;
+                cursor: pointer;
+            }
+
+            /* Show the dropdown menu (JS activates this class) */
+            .show {
+                display: block;
+            }
+
+            .datamatrix {
+                float: left;
+                padding-right: 25px;
+            }
+
+            #barcode {
+                width: 100px;
+            }
+            
+            .info-manf, .info-ndc, .info-lot, .info-exp {
+                line-height: 23px;
+            }
+
+            #lot-input{
+                font-size: 1.25rem;
+                width: 250px;
+            }
+
+            #exp-input {
+                font-size: 1.25rem;
+                width: 150px;
+            }
+
+            #printing-button {
+                margin-top: 50px;
+                width: 165px;
+                font-size: 1rem;
+            }
+
+            #print-sheet {
+                display: none;
+            }
