@@ -2,8 +2,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="author" content="Griffin Skaff, RPh">
+        <meta name="description" content='Select a vaccine, enter the lot and select the expiration date, and click "print sheet" to print a sheet of 5 data matrix codes that can be used with EPS in the fill station to auto populate the lot and expiration as well as the NDC for filling.'>
+        <link rel="icon" type="image/png" href="images/favicon_io/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
         <title>Vaccine Code Generator</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styles/style.css">
+        <title>Generate Scannable Data Matrix Codes For Fill Station</title>
     </head>
     <body>
         <div>
@@ -43,6 +49,9 @@
         </div>
         <div>
             <button id="printing-button" onclick="printDiv('print-sheet')">Print Sheet</button>
+        </div>
+        <div>
+            <img id="logo" src="images/logo.webp">
         </div>
         <div id="print-sheet">
             <div class="datamatrix">
@@ -121,6 +130,6 @@
             <div class="info-exp">
             </div>
         </div>
-        <script src="script.js"></script>
+        <script src="scripts/main.js"></script>
     </body>
 </html>

@@ -104,3 +104,9 @@
             #print-sheet {
                 display: none;
             }
+
+            #logo {
+                position: absolute;
+                bottom: 10;
+                right: 5;
+            }
