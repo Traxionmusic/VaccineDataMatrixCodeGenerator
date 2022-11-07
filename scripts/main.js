@@ -2,8 +2,7 @@
             var vac = {
                 manf: null,
                 ndc: null,
-                lot: null,
-                exp: null
+                lot: null
             };
 
             /* When button clicked toggle between hiding and showing list */
@@ -49,7 +48,7 @@
             });
         
             /* select and put vaccine manf in dictionary */
-            let codeNDC = null;
+            var codeNDC = null;
             function pfizerBivalent() {
                 document.getElementById('manf').innerHTML = document.getElementById('pfizer-bivalent').innerHTML;
                 vac.manf = "Pfizer Bivalent";
@@ -549,52 +548,237 @@
                 })
                 generateDataMatrix();
             }
-        
+
+            let currentMonth = new Date().getMonth();
+            
+            let currentDay = new Date().getDate();
+
+            let currentYear = new Date().getFullYear();
+
+            function isLeapYear(year) {
+                if (year % 400 === 0) return true;
+                if (year % 100 === 0) return false;
+                return year % 4 === 0;
+            }
+
+            function changeDays() {
+                let monthName = monthSelect.value; 
+                daySelect.innerHTML = "";
+                if (monthName == "Jan") {
+                    monthInput = 0;
+                    for (let i = 1; i < 32; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }
+                if (monthName == "Feb" && isLeapYear(Number(yearSelect.value))) {
+                    monthInput = 1;
+                    for (let i = 1; i < 30; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }
+                if (monthName == "Feb" && !isLeapYear(Number(yearSelect.value))) {
+                    monthInput = 1;
+                    for (let i = 1; i < 29; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }
+                if (monthName == "Mar") {
+                    monthInput = 2;
+                    for (let i = 1; i < 32; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }
+                if (monthName == "Apr") {
+                    monthInput = 3;
+                    for (let i = 1; i < 31; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }
+                if (monthName == "May") {
+                    monthInput = 4;
+                    for (let i = 1; i < 32; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }
+                if (monthName == "Jun") {
+                    monthInput = 5;
+                    for (let i = 1; i < 31; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }
+                if (monthName == "Jul") {
+                    monthInput = 6;
+                    for (let i = 1; i < 32; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                } 
+                if (monthName == "Aug") {
+                    monthInput = 7;
+                    for (let i = 1; i < 32; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }  
+                if (monthName == "Sep") {
+                    monthInput = 8;
+                    for (let i = 1; i < 31; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }  
+                if (monthName == "Oct") {
+                    monthInput = 9;
+                    for (let i = 1; i < 32; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }   
+                if (monthName == "Nov") {
+                    monthInput = 10;
+                    for (let i = 1; i < 31; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                } 
+                if (monthName == "Dec") {
+                    monthInput = 11;
+                    for (let i = 1; i < 32; i++) {
+                        var day = document.createElement("option");
+                        day.value = i;
+                        day.innerHTML = i;
+                        daySelect.appendChild(day)
+                    }
+                }                 
+            }
+
+            function changeYears() {
+                yearSelect.innerHTML = "";
+                for (i = 0; i < 11; i++) {
+                    var year = document.createElement("option");
+                    year.value = new Date().getFullYear() + i;
+                    year.innerHTML = new Date().getFullYear() + i;
+                    yearSelect.appendChild(year)
+                }
+            }
+
+            var monthSelect = document.getElementById("month-select");
+            var daySelect = document.getElementById("day-select");
+            var yearSelect = document.getElementById("year-select");
+            monthSelect.value = monthSelect[new Date().getMonth()].value;
+            changeDays();
+            daySelect.value = daySelect[new Date().getDate() - 1].value;
+            changeYears();
+            expFormat();
+            if (monthInput < 9) {
+                document.getElementById("month").innerHTML = "0" + (monthInput + 1);
+            } else {
+                document.getElementById("month").innerHTML = (monthInput + 1);
+            }
+            if (daySelect.value < 10) {
+                document.getElementById("day").innerHTML = "0" + daySelect.value;
+            } else {
+                document.getElementById("day").innerHTML = daySelect.value;
+            }
+            document.getElementById("year").innerHTML = yearSelect.value;
+            
             /* pick exp date and add to dictionary */
-            document.getElementById('exp-input').addEventListener("input", function(event){
-                let dateyear = document.getElementById('exp-input').value;
-                let arr = dateyear.split('-')
-                let dateFormat = arr[1] + "/" + arr[2] + "/" + arr[0];
-                vac.exp = dateFormat;
+            monthSelect.addEventListener('change', function() {
+                expFormat();
+                generateDataMatrix();
+                changeDays();
+                if (monthInput < 9) {
+                    document.getElementById("month").innerHTML = "0" + (monthInput + 1);
+                } else {
+                    document.getElementById("month").innerHTML = (monthInput + 1);
+                }
+                if (daySelect.value < 10) {
+                    document.getElementById("day").innerHTML = "0" + daySelect.value;
+                } else {
+                    document.getElementById("day").innerHTML = daySelect.value;
+                }  
+            })
+
+            daySelect.addEventListener('change', function() {
+                expFormat();
+                generateDataMatrix();
+                if (daySelect.value < 10) {
+                    document.getElementById("day").innerHTML = "0" + daySelect.value;
+                } else {
+                    document.getElementById("day").innerHTML = daySelect.value;
+                }
+            })
+
+            yearSelect.addEventListener('change', function() {
+                expFormat();
+                generateDataMatrix();
+                document.getElementById("year").innerHTML = yearSelect.value;    
+            })
+
+            function expFormat() {
+                formatYear = yearSelect.value.slice(2);
+                if (monthInput < 9) {
+                    formatMonth = "0" + (monthInput + 1);
+                } else {
+                    formatMonth = (monthInput + 1);
+                }
+                if (daySelect.value < 10) {
+                    formatDay = "0" + daySelect.value;
+                } else {
+                    formatDay = daySelect.value;
+                }
                 var divs = document.getElementsByClassName('info-exp');
                 [].slice.call(divs).forEach(function(div) {
-                    div.innerHTML = vac.exp;
+                    div.innerHTML = formatMonth + "/" + formatDay + "/" + yearSelect.value;
                 })
-                generateDataMatrix();
-            })
+            }
         
             /*generate datamatrix from provided info on button click */
             function generateDataMatrix() {
-            var dataMatrixExp = document.getElementById('exp-input').value.replace(/\-/g,'').slice(2);
             var imgs = document.getElementsByClassName('barcode');
                 [].slice.call(imgs).forEach(function(img) {
-                    img.src = "https://barcode.tec-it.com/barcode.ashx?data=01003" + codeNDC + "417" + dataMatrixExp + "10" + vac.lot + "|21VACGEN&code=DataMatrix&translate-esc=true&dmsize=Default&eclevel=L";
+                    img.src = "https://barcode.tec-it.com/barcode.ashx?data=01003" + codeNDC + "417" + formatYear + formatMonth + formatDay + "10" + vac.lot + "|21VACGEN&code=DataMatrix&translate-esc=true&dmsize=Default&eclevel=L";
                 })
             }
 
 
             /* printing function */
             function printDiv(divName) {
-                if (vac.manf != null && vac.exp != null && vac.lot != null) {
                 var printContents = document.getElementById(divName).innerHTML;
                 var originalContents = document.body.innerHTML;
                 document.body.innerHTML = printContents;
                 window.print();
                 window.onafterprint = location.reload();
                 document.body.innerHTML = originalContents;
-                } else if (vac.manf == null && vac.exp != null && vac.lot != null) {
-                    alert("Please pick a vaccine")
-                } else if (vac.manf != null && vac.exp == null && vac.lot != null) {
-                    alert("Please select an expiration date")
-                } else if (vac.manf != null && vac.exp != null && vac.lot == null) {
-                    alert("Please enter a lot (type in the lot and press enter)")
-                } else if (vac.manf == null && vac.exp == null && vac.lot != null) {
-                    alert("Please pick a vaccine and select an expiration date")
-                } else if (vac.manf == null && vac.exp != null && vac.lot == null) {
-                    alert("Please pick a vaccine and enter a lot (type in the lot and press enter)")
-                } else if (vac.manf != null && vac.exp == null && vac.lot == null) {
-                    alert("Please select an expiration date and enter a lot (type in the lot and press enter")
-                } else {
-                    alert("You haven't selected anything")
-                }
             }

@@ -55,8 +55,30 @@
             <input id="lot-input" type="text" placeholder="Type lot and press enter">
             <p id="lot-output">Lot: <span id='lot'></span></p>
         </div>
-        <div>
-            <input type="date" id="exp-input">
+        <div id="exp-total">
+            <div id="exp-input">
+                <select id="month-select">
+                    <option>Jan</option>
+                    <option>Feb</option>
+                    <option>Mar</option>
+                    <option>Apr</option>
+                    <option>May</option>
+                    <option>Jun</option>
+                    <option>Jul</option>
+                    <option>Aug</option>
+                    <option>Sep</option>
+                    <option>Oct</option>
+                    <option>Nov</option>
+                    <option>Dec</option>
+                </select>
+                <select id="day-select">
+                </select>
+                <select id="year-select">
+                </select>
+            </div>
+            <div>
+                <p id="exp-output">Exp: <span id="month"></span>/<span id="day"></span>/<span id="year"></span></p>
+            </div>
         </div>
         <div>
             <button id="printing-button" onclick="printDiv('print-sheet')">Print Sheet</button>
